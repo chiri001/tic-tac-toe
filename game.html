@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tic Tac Toe</title>
+
+        <!------------style for the rest of the pages-------------->
+        <link rel="stylesheet" href="game.css" />
+
+        <!-----font-awesome-icons-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha384-XX..."
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <!------------------------Home-------------------------------->
+        <div id="home">
+            <div id="player-win" class="game-popup">
+                <canvas id="confetti-canvas"></canvas>
+                <p class="winner" id="winner">Player 1 wins !!</p>
+                <button class="game_btn" id="restart" onclick="restart_game()">
+                    Restart
+                </button>
+            </div>
+            <div class="head" id="header">
+                <h1>Tic Tac Toe</h1>
+            </div>
+            <div class="board">
+                <table>
+                    <tr>
+                        <td data-cell="0" onclick="played(this)"></td>
+                        <td data-cell="1" onclick="played(this)"></td>
+                        <td data-cell="2" onclick="played(this)"></td>
+                    </tr>
+                    <tr>
+                        <td data-cell="3" onclick="played(this)"></td>
+                        <td data-cell="4" onclick="played(this)"></td>
+                        <td data-cell="5" onclick="played(this)"></td>
+                    </tr>
+                    <tr>
+                        <td data-cell="6" onclick="played(this)"></td>
+                        <td data-cell="7" onclick="played(this)"></td>
+                        <td data-cell="8" onclick="played(this)"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="button">
+                <button class="btn" id="current_player">Player 1 turn</button>
+            </div>
+            <div class="rules">
+                <a href="game_rules.html" target="_blank">Game rules</a>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+    <script src="game.js"></script>
+</html>

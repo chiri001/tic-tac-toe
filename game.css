@@ -1,0 +1,235 @@
+/*--Written by Rennie Kipchirchir on 09/25/23-------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth; /*for smooth movement of page*/
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#home {
+    position: relative;
+    background-image: url(images/board1.avif); /*adds background image to page*/
+    width: 100%; /*cover entire page width*/
+    height: 100vh; /*adjust to visible height of the page*/
+    background-size: cover; /*to allow even scaling depending on page size*/
+    background-position: center; /*puts scale focus to center*/
+    background-repeat: no-repeat; /*display image only once*/
+}
+
+.head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.head h1 {
+    font-size: 45px;
+    color: rgb(255, 255, 255);
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 350px;
+    background-color: rgb(241, 236, 227);
+    margin: 0 auto;
+}
+
+.board table td {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 24px;
+    border: 2px solid rgb(13, 23, 20);
+    background-color: rgb(0, 0, 0, 0.9);
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    padding: 3%;
+}
+
+.btn {
+    padding: 15px;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: rgb(3, 2, 2);
+    color: rgb(245, 239, 239);
+    border: solid 2px rgb(245, 239, 239);
+}
+
+.rules {
+    display: flex;
+    justify-content: center;
+}
+
+.rules a {
+    color: white;
+    font-size: 20px;
+}
+
+.game-popup {
+    position: fixed; /* Fixes the cover to cover the whole viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Translucent black background */
+    z-index: 999; /*place the page on top of page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+.winner {
+    color: gold;
+    font-size: 45px;
+    margin-bottom: 3%;
+}
+
+canvas {
+    z-index: 1001;
+}
+
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.game_btn {
+    background-color: rgb(4, 196, 4);
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 15px 30px;
+    cursor: pointer; /*chnages pointer to hand icos */
+    transition: background-color 0.3s; /*for smooth transition*/
+    margin: 2%;
+}
+
+.game_btn:hover,
+.start-btn button:hover {
+    background-color: rgb(117, 243, 117);
+}
+
+.start-btn {
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+}
+.start-btn button {
+    background-color: rgb(4, 196, 4);
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 15px 30px;
+    color: white;
+    cursor: pointer; /*chnages pointer to hand icos */
+    transition: background-color 0.3s; /*for smooth transition*/
+    margin: 2%;
+}
+
+#restart {
+    z-index: 1001;
+}
+
+.game_sign {
+    color: white;
+    font-size: 24px;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 1% auto;
+}
+
+.form-item {
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+}
+
+.start-page label {
+    color: rgb(4, 196, 4);
+    font-weight: bold;
+}
+
+.start-page input,
+.start-page label {
+    padding: 15px;
+    font-size: 24px;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.start-page {
+    position: fixed; /* Fixes the cover to cover the whole viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(images/start.jpeg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#rules {
+    background-image: url(images/jon-tyson-eTjX8xc1in8-unsplash.jpg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.rules-box {
+    display: flex;
+    justify-content: center;
+    border: 2px solid white;
+    width: 50%;
+    width: 400px;
+    margin: 0 auto;
+    padding: 3%;
+    background-color: black;
+    color: white;
+}
+
+nav ol li {
+    font-size: 20px;
+    padding: 2%;
+}
+
+.head h2 {
+    font-size: 45px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}

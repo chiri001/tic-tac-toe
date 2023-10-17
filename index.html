@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tic Tac Toe</title>
+
+        <!------------style for the rest of the pages-------------->
+        <link rel="stylesheet" href="game.css" />
+
+        <!-----font-awesome-icons-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha384-XX..."
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <!------------------------Home-------------------------------->
+
+        <div class="game_start">
+            <div class="start-page">
+                <form
+                    onsubmit="event.preventDefault(); start_game('player_1', 'player_2')"
+                >
+                    <div class="form-item">
+                        <label for="player-1">Player 1:</label>
+                        <input
+                            type="text"
+                            placeholder="Enter name"
+                            id="player_1"
+                            name="player-1"
+                            required
+                        />
+                    </div>
+                    <div class="form-item">
+                        <label for="player-1">Player 2:</label>
+                        <input
+                            type="text"
+                            placeholder="Enter name"
+                            id="player_2"
+                            name="player-2"
+                            required
+                        />
+                    </div>
+                    <div class="start-btn">
+                        <button type="submit">Start Game</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="game.js"></script>
+</html>
