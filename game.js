@@ -1,36 +1,59 @@
-let board = ['', '', '', '', '', '', '', '', ''];
+let board = ['', '', '', '', '', '', '', '', '']; //board input tracker
+
+//variables needed for game
 let game_over = false;
 let curr_sign = `X`;
 let player_1 = 'X';
 let player_2 = 'O';
+
+//intialize curr_player
 let curr_player = player_1;
 
+//the function initializes the game
+//parameters: p1, p2 which are both the id of player 1 and player 2
 function start_game(p1, p2) {
-    initialize_game(p1, p2);
+    initialize_game(p1, p2); //initializes player 1 and 2
+
+    //store them to be used during game in game.html
     sessionStorage.setItem('player_1', player_1);
     sessionStorage.setItem('player_2', player_2);
     window.location.href = 'game.html';
 }
 
+//intializes player 1 name and player 2 name
+//parameters: p1, p2 which are both the id of player 1 and player 2
 function initialize_game(p1, p2) {
+    //initialize
     player_1 = document.getElementById(p1).value;
     player_2 = document.getElementById(p2).value;
+
+    //clear the input box
     document.getElementById(p1).value = '';
     document.getElementById(p2).value = '';
 }
 
+//occurs only when user is on game.html
 if (window.location.pathname.includes('game.html')) {
+    //get items that were stored in game initialization
     player_1 = sessionStorage.getItem('player_1');
     player_2 = sessionStorage.getItem('player_2');
-    curr_player = player_1;
+    curr_player = player_1; //assumes first player is always player 1
+
+    //Update box showing whose turn it is to play to show player 1's name
     document.getElementById('current_player').textContent =
         curr_player + "'s Turn";
 }
+
+//function is responsible of tracking inputs into the tic tac toe board and
+//establish whether there is a winner or a draw
+//parameter: cell is the current box that was clicked on the 3 * 3 board.
 function played(cell) {
+    //uses tne data-* attribute which stores data private to cell-->(index)
     cellIndex = cell.getAttribute('data-cell'); //gets index of cell
 
     if (board[cellIndex] === '' && !game_over) {
-        board[cellIndex] = curr_sign;
+        board[cellIndex] = curr_sign; //update back-end board sign
+        //update board on screen
         cell.innerHTML = `<h1 class="game_sign"> ${curr_sign} </h1> `;
 
         //check if winner is found
@@ -50,12 +73,13 @@ function played(cell) {
         } else {
             //keep playing
             if (curr_sign === 'X') {
-                //next player
+                //player_2 is next
                 curr_player = player_2;
                 document.getElementById('current_player').textContent =
                     player_2 + "'s Turn";
                 curr_sign = 'O';
             } else {
+                //player 1 is next
                 curr_player = player_1;
                 document.getElementById('current_player').textContent =
                     player_1 + "'s Turn";
@@ -65,8 +89,10 @@ function played(cell) {
     }
 }
 
+//function checks if there is a winning combination on the board
 function isWinner() {
-    winningCombinations = [
+    //array that stores all winning combinations
+    winCombinations = [
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8],
@@ -78,7 +104,7 @@ function isWinner() {
     ];
 
     //if board has any of winning combination then winner is found
-    for (let combination of winningCombinations) {
+    for (let combination of winCombinations) {
         if (
             board[combination[0]] !== '' &&
             board[combination[0]] === board[combination[1]] &&
@@ -92,18 +118,21 @@ function isWinner() {
     return false; //no winning combination found
 }
 
+//function is responsible for launching confetti after winner is found
 function launchConfetti() {
+    //gets the location to display confetti by accessing the id
     confetti_canv = document.getElementById('confetti-canvas');
 
     confetti.create(confetti_canv, {
-        resize: true,
+        resize: true, //enables it to resize with screen
     })({
-        particleCount: 200,
+        particleCount: 500,
         spread: 100,
-        origin: { y: 0.3 },
+        origin: { y: 0.5 },
     });
 }
 
+//function is responsible for restarting the game after winner/draw  is found
 function restart_game() {
     //clear the board marks
     let cells = document.querySelectorAll('[data-cell]');
